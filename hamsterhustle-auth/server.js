@@ -10,13 +10,10 @@ const port = 3000;
 const fitnessPrograms = require("./fitnessPrograms");
 
 // MongoDB Connection
-mongoose.connect(
-  "mongodb+srv://hamster:gdHCZHh0K8vnPEko@hamster-cluster.enppiig.mongodb.net/",
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  }
-);
+mongoose.connect("mongodb://127.0.0.1:27017/hamsterhustle", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 // Create User Schema
 const userSchema = new mongoose.Schema({
