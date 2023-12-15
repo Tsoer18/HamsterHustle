@@ -5,7 +5,7 @@ import certifi
 
 def cleanup_database():
     print("Connecting to MongoDB...")
-    uri = "mongodb+srv://hamster:gdHCZHh0K8vnPEko@hamster-cluster.enppiig.mongodb.net/?retryWrites=true&w=majority"
+    uri = "mongodb://127.0.0.1:27017/hamsterhustle"
 
     client = MongoClient(uri, server_api=ServerApi('1'), tlsCAFile=certifi.where())
     
@@ -17,3 +17,4 @@ def cleanup_database():
     
     # Close the connection
     client.close()
+    
