@@ -1,0 +1,5 @@
+behave @ git+https://github.com/behave/behave@afb6b6716cd0f3e028829416475312db804a6aa9
+certifi==2023.11.17
+cucumber-tag-expressions==4.1.0
+pymongo==4.6.1
+selenium==4.15.2

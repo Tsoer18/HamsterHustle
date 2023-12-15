@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- ... (head section) ... -->
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+  </head>
+  <body>
+    <h1>Your Profile</h1>
+    <p>Email: <%= user.email %></p>
+    <p>Gender: <%= user.gender %></p>
+    <p>Age: <%= user.age %></p>
+    <p>Fitness Level: <%= user.fitnessLevel %></p>
+    <p>Fitness Goals: <%= user.fitnessGoals.join(", ") %></p>
+
+    <h2>Edit Profile</h2>
+    <form action="/profile" method="post">
+      <!-- Add fields for updating user information -->
+      <label for="gender">Gender:</label>
+      <input type="text" id="gender" name="gender" value="<%= user.gender %>" required>
+
+      <label for="age">Age:</label>
+      <input type="number" id="age" name="age" value="<%= user.age %>" required>
+
+      <label for="fitnessLevel">Fitness Level:</label>
+      <select id="fitnessLevel" name="fitnessLevel">
+        <option value="Novice" <% if (user.fitnessLevel === 'Novice') { %>selected<% } %>>Novice</option>
+        <option value="Intermediate" <% if (user.fitnessLevel === 'Intermediate') { %>selected<% } %>>Intermediate</option>
+        <option value="High" <% if (user.fitnessLevel === 'High') { %>selected<% } %>>High</option>
+      </select>
+
+      <label for="fitnessGoals">Fitness Goals:</label>
+      <!-- Add checkboxes for fitness goals -->
+      <!-- Populate these checkboxes based on user data -->
+      <input type="checkbox" id="loseWeight" name="fitnessGoals" value="Lose Weight" <% if (user.fitnessGoals.includes('Lose Weight')) { %>checked<% } %>>
+      <label for="loseWeight">Lose Weight</label>
+      <!-- Add checkboxes for other fitness goals -->
+
+      <button type="submit">Update Profile</button>
+    </form>
+  </body>
+</html>

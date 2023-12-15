@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HamsterHustle - Your Fitness Journey</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Favicon -->
+   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+   <link rel="manifest" href="/site.webmanifest">   
+  </head>
+  <body>
+    <header class="header">
+      <a href="/" class="logo-link">
+        <h1>HamsterHustle</h1>
+      </a>
+      <div class="user-info">
+        <% if (user && user.email) { %> Logged in as: <%= user.email %> <% } %>
+      </div>
+      <div class="user-links">
+        <% if (user && user.email) { %>
+        <a href="/progress" class="cta-button progress-button">
+          <i class="icon">🏋️‍♀️</i> Track Your Progress
+        </a>
+        <a href="/profile" class="profile-button">
+          <i class="icon">👤</i> View / Edit Profile
+        </a>
+        <a href="/recommendations" class="cta-button recommendations-button">
+          <i class="icon">🏋️‍♂️</i> Fitness Recommendations
+        </a>
+        <a href="/logout" class="logout-button">
+          <i class="icon">🚪</i> Logout
+        </a>
+        <% } %>
+      </div>
+    </header>
+
+    <div class="container">
+      <h1>Track Your Fitness Progress</h1>
+      <form action="/saveProgress" method="POST" class="progress-form">
+        <div class="form-group">
+          <label for="category">Category:</label>
+          <!-- Update the select element in progress.ejs -->
+          <select name="category" id="category" required onchange="updateUnit()">
+            <option value="Weight" <%= selectedCategory === 'Weight' ? 'selected' : '' %>>Weight</option>
+            <option value="Max Bench Weight" <%= selectedCategory === 'Max Bench Weight' ? 'selected' : '' %>>Max Bench Weight</option>
+            <option value="Max Run Distance" <%= selectedCategory === 'Max Run Distance' ? 'selected' : '' %>>Max Run Distance</option>
+            <option value="Max Squat" <%= selectedCategory === 'Max Squat' ? 'selected' : '' %>>Max Squat</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="newValue">New Value:</label>
+          <div class="input-with-unit">
+            <input
+              type="text"
+              name="newValue"
+              id="newValue"
+              pattern="\d+(\.\d+)?"
+              title="Please enter a valid number"
+              required
+            />
+            <span id="unit">kg</span>
+          </div>
+        </div>
+        <script>
+          function updateUnit() {
+            // Get the selected category
+            var category = document.getElementById("category").value;
+    
+            // Get the unit span element
+            var unitSpan = document.getElementById("unit");
+    
+            // Update the unit based on the selected category
+            switch (category) {
+              case "Weight":
+              case "Max Bench Weight":
+              case "Max Squat":
+                unitSpan.innerText = "kg";
+                break;
+              case "Max Run Distance":
+                unitSpan.innerText = "km";
+                break;
+              default:
+                unitSpan.innerText = "";
+                break;
+            }
+          }
+        </script>
+        <style>
+          .form-group {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Add this to align items with the label */
+          }
+    
+          .input-with-unit {
+            display: flex;
+            align-items: baseline;
+            position: relative;
+          }
+    
+          #unit {
+            position: absolute;
+            right: 48px; /* Adjust the right distance as needed */
+            color: #555;
+            font-size: 100%; /* Adjust font size as needed */
+          }
+        </style>
+        <button type="submit" class="cta-button">Save Progress</button>
+      </form>
+    
+      <% if (chartData && Object.keys(chartData).length > 0) { %>
+        <h1>Your Fitness Progress</h1>
+        <div class="progress-visualization">
+          <div class="chart-grid">
+            <% Object.keys(chartData).forEach((category, index) => { %>
+              <div class="chart-item">
+                <h2><%= category %></h2>
+                <canvas
+                  id="<%= category.replace(/\s+/g, '_') %>Chart"
+                  width="400"
+                  height="200"
+                ></canvas>
+    
+                <script>
+                  // Add this line to get the correct canvas element
+                  var <%= category.replace(/\s+/g, '_') %>Canvas = document.getElementById('<%= category.replace(/\s+/g, '_') %>Chart');
+    
+                  var <%= category.replace(/\s+/g, '_') %>Data = {
+                    labels: [<%- chartData[category].labels.map(date => `"${date}"`).join(',') %>],
+                    datasets: [
+                      {
+                        label: '<%= category %>',
+                        data: [<%- chartData[category].data.join(',') %>],
+                        pointRadius: <%= chartData[category].labels.length > 1 ? '5' : '0' %>, // Set point radius based on the number of data points
+                        fill: false,
+                        borderColor: 'rgb(75, 192, 192)',
+                        tension: 0.1
+                      }
+                    ]
+                  };
+    
+                  // Destroy existing chart if it exists
+                  var <%= category.replace(/\s+/g, '_') %>Chart = <%= category.replace(/\s+/g, '_') %>Canvas.chart;
+                  if (<%= category.replace(/\s+/g, '_') %>Chart) {
+                    <%= category.replace(/\s+/g, '_') %>Chart.destroy();
+                  }
+    
+                  <%= category.replace(/\s+/g, '_') %>Chart = new Chart(<%= category.replace(/\s+/g, '_') %>Canvas, {
+                    type: 'line',
+                    data: <%= category.replace(/\s+/g, '_') %>Data
+                  });
+    
+                  <%= category.replace(/\s+/g, '_') %>Canvas.chart = <%= category.replace(/\s+/g, '_') %>Chart;
+                </script>
+              </div>
+              
+              <% if ((index + 1) % 2 === 0) { %>
+                </div><div class="chart-grid"> <!-- Start a new row after every 2 charts -->
+              <% } %>
+            <% }); %>
+          </div>
+        </div>
+      <% } %>
+    </div>
+    
+  </body>
+</html>

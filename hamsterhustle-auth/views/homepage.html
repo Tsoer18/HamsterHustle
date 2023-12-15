@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HamsterHustle - Your Fitness Journey</title>
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+      }
+
+      .header {
+        background-color: #007bff;
+        color: #fff;
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 36px;
+        margin-bottom: 20px;
+      }
+
+      p {
+        font-size: 18px;
+        line-height: 1.5;
+        margin-bottom: 20px;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 20px;
+      }
+
+      .cta-button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 18px;
+        margin-right: 10px;
+      }
+
+      .cta-button:hover {
+        background-color: #0056b3;
+      }
+
+      /* Style the user info section when logged in */
+      .user-info {
+        font-size: 20px;
+        color: #333;
+        margin-top: 20px;
+        display: none; /* Initially hide the user info */
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <h1>HamsterHustle</h1>
+      <a href="/profile">View / Edit Profile</a>
+    </header>
+    <div class="container">
+      <img src="fitness.jpg" alt="Fitness Image" />
+      <h1>Your Fitness Journey Starts Here</h1>
+      <p>
+        Discover personalized workouts, track your progress, and achieve your
+        fitness goals with HamsterHustle.
+      </p>
+      <p>
+        Explore our workout plans, connect with fellow fitness enthusiasts, and
+        get inspired to stay active.
+      </p>
+
+      <!-- Display user info if the user is logged in -->
+      <% if (user && user.email) { %>
+      <div class="user-info">Logged in as: <%= user.email %></div>
+      <% } else { %>
+      <a class="cta-button" href="/login">Log In</a>
+      <a class="cta-button" href="/register">Register</a>
+      <% } %>
+    </div>
+  </body>
+</html>

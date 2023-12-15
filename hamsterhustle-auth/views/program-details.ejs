@@ -1,0 +1,63 @@
+<!-- program-details.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HamsterHustle - <%= program.name %> Details</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <style>
+      .program-details p {
+        text-align: left;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <a href="/" class="logo-link">
+        <h1>HamsterHustle</h1>
+      </a>
+      <div class="user-info">
+        <% if (user && user.email) { %> Logged in as: <%= user.email %> <% } %>
+      </div>
+      <div class="user-links">
+        <% if (user && user.email) { %>
+        <a href="/progress" class="cta-button progress-button">
+          <i class="icon">🏋️‍♀️</i> Track Your Progress
+        </a>
+        <a href="/profile" class="profile-button">
+          <i class="icon">👤</i> View / Edit Profile
+        </a>
+        <a href="/recommendations" class="cta-button recommendations-button">
+          <i class="icon">🏋️‍♂️</i> Fitness Recommendations
+        </a>
+        <a href="/logout" class="logout-button">
+          <i class="icon">🚪</i> Logout
+        </a>
+        <% } %>
+      </div>
+    </header>
+
+    <div class="container">
+      <h1><%= program.name %> Details</h1>
+
+      <div class="program-details">
+        <% program.steps.forEach(step => { %>
+        <div class="program-step">
+          <h2><%= step.title %></h2>
+          <p><%- step.description.replace(/\n/g, '<br />') %></p>
+        </div>
+        <% }); %>
+
+        <p><%- program.nutritionTips.replace(/\n/g, '<br />') %></p>
+        <!-- Add other program details as needed -->
+      </div>
+    </div>
+  </body>
+</html>

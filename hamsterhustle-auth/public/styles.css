@@ -1,0 +1,374 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  background-color: #007bff;
+  color: #fff;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 18px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 18px;
+  margin-right: 10px;
+  transition: background-color 0.3s;
+  border: 2px solid #007bff;
+  outline: none;
+}
+
+.cta-button:hover {
+  background-color: #0056b3;
+}
+
+/* Icon styles */
+.user-links {
+  display: inline-block;
+  margin-top: 10px;
+}
+
+.icon {
+  margin-right: 10px;
+  font-size: 20px;
+  vertical-align: middle;
+}
+
+.user-info {
+  font-size: 20px;
+  color: #fff;
+}
+
+/* Style for the logout and view profile buttons */
+.logout-button,
+.profile-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff; /* Slightly darker blue background color */
+  color: #ffffff; /* Text color changed to the website's primary color */
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 18px;
+  margin-right: 10px;
+  transition: background-color 0.3s, color 0.3s;
+  border: 1px solid #ffffff;
+  outline: none;
+}
+
+.logout-button:hover,
+.profile-button:hover {
+  background-color: #77b7ff; /* Slightly darker blue button color on hover */
+  color: #001651; /* Text color on hover remains the same */
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  text-align: center; /* Center text within form-group */
+}
+
+label {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+input {
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #007bff;
+  border-radius: 5px;
+  transition: border-color 0.3s;
+  width: 50%; /* Adjust the width as needed */
+  margin: 0 auto; /* Center input fields within form-group */
+}
+
+input:focus {
+  border-color: #0056b3;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+label {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #007bff;
+  border-radius: 5px;
+  transition: border-color 0.3s;
+  width: 50%;
+  margin: 0 auto;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+select:focus {
+  border-color: #0056b3;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 18px;
+  margin-right: 10px;
+  transition: background-color 0.3s;
+  border: 2px solid #007bff;
+  outline: none;
+}
+
+.cta-button:hover {
+  background-color: #0056b3;
+}
+
+.checkbox-group {
+  justify-content: center;
+  align-items: center;
+}
+
+.checkbox-group input[type="checkbox"] {
+  margin-left: 10px; /* Adjust the margin as needed */
+  width: 20px;
+  height: 20px;
+}
+
+.checkbox-group label {
+  font-size: 18px;
+  margin-bottom: 0;
+  align-items: center;
+}
+
+.progress-button {
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border: 1px solid #fff; /* Set the border color to white */
+  border-radius: 5px;
+  font-size: 18px;
+  margin-right: 10px;
+  transition: background-color 0.3s;
+  outline: none;
+}
+
+.progress-button:hover {
+  background-color: #0056b3;
+}
+
+/* Style for the Progress View button */
+.progress-view-button {
+  /* Add or modify styles here to match the design of other buttons */
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 18px;
+  margin-right: 10px;
+  transition: background-color 0.3s;
+  border: 1px solid #fff; /* Thin white border */
+  outline: none;
+}
+
+.progress-view-button:hover {
+  background-color: #0056b3;
+}
+
+/* Default styles for larger screens */
+/* Default styles for larger screens */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.user-info,
+.user-links {
+  display: flex;
+  align-items: center;
+}
+
+.cta-button {
+  margin-left: 10px;
+  padding: 10px 20px; /* Set fixed padding for the buttons */
+}
+
+/* Responsive styles for smaller screens (mobile) */
+@media screen and (max-width: 600px) {
+  .header {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .user-links {
+    margin-top: 10px;
+  }
+
+  .cta-button {
+    margin: 10px 0;
+    width: 100%; /* Make buttons full width on small screens */
+  }
+}
+
+.recommendations-button {
+  /* Add or modify styles here to match the design of other buttons */
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 18px;
+  margin-right: 10px;
+  transition: background-color 0.3s;
+  border: 1px solid #fff; /* Thin white border */
+  outline: none;
+}
+
+.recommendations-button:hover {
+  background-color: #0056b3;
+}
+
+.logo-link {
+  text-decoration: none; /* Remove underline from the link */
+  color: #fff; /* Set the text color to white */
+  font-size: 24px; /* Adjust the font size as needed */
+  font-weight: bold; /* Make the text bold */
+  margin-right: 20px; /* Add some right margin for spacing */
+}
+
+/* Hover effect to change color on hover */
+.logo-link:hover {
+  color: #ddd; /* Slightly darker color on hover */
+}
+
+/* Add these styles to your stylesheet */
+
+.header {
+  background-color: #007bff; /* Set the background color as needed */
+  padding: 10px;
+  overflow: hidden; /* Hide overflowing content */
+}
+
+.logo-link {
+  text-decoration: none;
+  color: #fff;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.user-info {
+  color: #fff;
+  margin-right: auto; /* Push user info to the left */
+}
+
+.user-links {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap; /* Allow items to wrap to the next line */
+}
+
+.cta-button,
+.profile-button,
+.recommendations-button,
+.logout-button {
+  text-decoration: none;
+  color: #fff; /* Make the text white */
+  padding: 10px 15px;
+  margin-right: 10px;
+  margin-top: 10px; /* Add margin between buttons */
+  transition: background-color 0.3s; /* Add transition for smooth hover effect */
+}
+
+.cta-button:hover,
+.profile-button:hover,
+.recommendations-button:hover,
+.logout-button:hover {
+  background-color: #2980b9; /* Change the background color on hover as needed */
+  color: #fff; /* Make the text white on hover */
+}
+
+.icon {
+  margin-right: 5px;
+}
+
+.chart-grid {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -10px; /* Adjust margin as needed */
+}
+
+.chart-item {
+  flex: 1 0 50%; /* Each chart takes 50% width */
+  box-sizing: border-box;
+  margin: 10px; /* Adjust margin as needed */
+}
+
+.program-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.program-card {
+  border: 2px solid #3498db; /* Blue border color */
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+}
